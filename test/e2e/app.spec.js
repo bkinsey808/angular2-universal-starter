@@ -1,18 +1,24 @@
 describe('angular2-universal-starter application', function() {
+  var app;
  
   beforeEach(function() {
     browser.get('/');
+    app = element(by.tagName('app'));
   })
   
-  it('should show "Preboot is working" message', function() {
-    const button = element(by.id('check-preboot'));
-    const message = element(by.id('message-preboot'));
+  describe('Preboot page', function() {
     
-    expect(button.getText()).toEqual('Check "preboot"');
-    expect(message.isPresent()).toBeFalsy();
-    button.click();
-    expect(message.isPresent()).toBeFalsy();
-    
-    browser.wait(function() { return message.isPresent() }, 5000);
+    it('should show "Preboot is working" message when you\'ve clicked on check preboot button', function() {
+      const button = app.element(by.id('check-preboot'));
+      const message = app.element(by.id('message-preboot'));
+      
+      expect(message.isPresent()).toBeFalsy();
+      button.click();
+      expect(message.isPresent()).toBeFalsy();
+      
+      browser.wait(function() { return message.isPresent() }, 5000);
+      
+      expect(message.getText()).toBe('Preboot is working');
+    });    
   });
 });

@@ -2,15 +2,23 @@ declare var require: any;
 
 import { Component } from 'angular2/core';
 import { NgIf } from 'angular2/common';
+import { RouteConfig, RouterOutlet } from 'angular2/router';
+import { PrebootPage } from './PrebootPage';
 import * as style from './App.css';
 import * as template from './App.html';
 
 @Component({
   selector: 'app',
-  directives: [NgIf],
-  template,
-  styles: [style]
+  directives: [NgIf, RouterOutlet],
+  template: 'asdfasdf'
 })
+@RouteConfig([
+  { 
+    path: '/', 
+    name: 'Preboot', 
+    component: PrebootPage 
+  }
+])
 export class App {
   name = 'World';
   messagePreboot = '';
